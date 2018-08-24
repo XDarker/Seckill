@@ -10,7 +10,7 @@ import java.util.Date;
  * 2018/8/22 21:39
  */
 @Data
-public class SuccessKilled {
+public class SecKillOrder {
 
     private Long seckillId;
     private Long userPhone;
@@ -21,18 +21,18 @@ public class SuccessKilled {
     //多对一 符合属性
     private SeckillGoods seckill;
 
-    private SuccessKilled(){
+    private SecKillOrder(){
         super();
     }
 
-    public SuccessKilled(Long seckillId, Long userPhone, Short state, Date createTime, SeckillGoods seckill) {
+    public SecKillOrder(Long seckillId, Long userPhone, Short state, Date createTime, SeckillGoods seckill) {
         this.seckillId = seckillId;
         this.userPhone = userPhone;
         this.state = state;
         this.createTime = createTime;
         this.seckill = seckill;
     }
-    public SuccessKilled(Long seckillId, Long userPhone, Short state, Date createTime) {
+    public SecKillOrder(Long seckillId, Long userPhone, Short state, Date createTime) {
         this.seckillId = seckillId;
         this.userPhone = userPhone;
         this.state = state;
@@ -81,7 +81,7 @@ public class SuccessKilled {
 
     @Override
     public String toString() {
-        return "SuccessKilled{" +
+        return "SecKillOrder{" +
                 "seckillId=" + seckillId +
                 ", userPhone=" + userPhone +
                 ", state=" + state +
