@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xdarker.dao.SuccessKilledMapper" >
+  <resultMap id="BaseResultMap" type="com.xdarker.pojo.SecKillOrder" >
+    <constructor >
+      <idArg column="seckill_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <idArg column="user_phone" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="state" jdbcType="TINYINT" javaType="java.lang.Short" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    skiied_id, user_phone, state, create_time
+  </sql>
+    <insert id="insertSuccessKilled">
+        <!-- 主键冲突，会报错-->
+        INSERT ignore INTO success_killed(seckill_id,user_phone,state)
+        VALUES (#{seckillId}, #{userPhone},0)
+    </insert>
+
+  <select id="queryByIdWithSeckill" resultMap="BaseResultMap">
+      <!--根据id查询SuccessKilled并携带秒杀产品对象实体-->
+      <!--如何告诉mybatis把结果映射到successKilled同时映射seckill属性-->
+      <!--自己控制SQL语句-->
+      SELECT
+        sk.seckill_id,
+        sk.user_phone,
+        sk.create_time,
+        sk.state,
+        s.seckill_id "seckill.seckill_id",
+        s.name "seckill.name",
+        s.number "seckill.number",
+        s.create_time "seckill.create_time",
+        s.start_time "seckill.start_time",
+        s.end_time "seckill.end_time"
+
+      FROM success_killed sk
+      INNER JOIN seckill s on sk.seckill_id = s.seckill_id
+      WHERE sk.seckill_id = #{seckillId} AND sk.user_phone = #{userPhone}
+
+  </select>
+
+</mapper>
