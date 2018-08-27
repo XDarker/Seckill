@@ -12,6 +12,11 @@ spring:
     max-total: 5                                          # 最大连接数
     max-wait-millis: 200                                  # 等待连接获取
 
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
 
   redis:
     password:                       # Redis服务器连接密码（默认为空）
@@ -26,17 +31,22 @@ spring:
 
     cluster:
       nodes: 127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381,127.0.0.1:6382,127.0.0.1:6383,127.0.0.1:6384
-    pool:
-      max-wait:
-
   #port: 6379                       # Redis服务器连接端口
   #host: 127.0.0.1                  # Redis服务器地址
 
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: XDarker
+    password: XDarker
+    publisher-confirms: true    #  消息发送到交换机确认机制,是否确认回调
+    virtual-host: /XDarker
+
 
 #配置项目路径
-server:
-  servlet:
-    context-path: /seckill
+#server:
+#  servlet:
+#    context-path: /seckill
 
 logging:
   level:
