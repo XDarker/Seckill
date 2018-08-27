@@ -7,8 +7,9 @@ package com.xdarker.common;
  */
 public class Const {
     public static final String COOKI_NAME_TOKEN = "token";
-    public static final int EXPIRETIME = 60 * 60;
+    public static final int EXPIRETIME = 60 * 60;//秒
 
+    public static final int EXPIRETIME1 = 60;
 
     public enum SeckillStateEnum{
         SUCCESS(1,"秒杀成功"),
