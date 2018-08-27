@@ -54,7 +54,7 @@ public class RedisClusterServiceImpl implements IRedisClusterService {
      * @return
      */
     public Long expire(String key){
-        return jedisCluster.expire(key,Const.EXPIRETIME);
+        return jedisCluster.expire(key,Const.EXPIRETIME1);
     }
 
     /**
